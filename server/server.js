@@ -76,3 +76,29 @@ app.listen(app.get('port'), function () {
             response.send(result); //get------- sents all details of current users ----ace
         })
     })
+
+
+app.route('/getListItem', cors(corsOptions))
+.get(function (request, response) {
+db.query('SELECT * FROM Recipe ;', function (error, result, fields) {
+if (error) {
+console.log('Error message: ', error);
+throw error;
+};
+console.log(result)
+response.send(result);
+//sent all item details
+})
+})
+
+app.route('/getAllMealPlanner', cors(corsOptions))
+.get(function (request, response) {
+    db.query('SELECT * FROM MealPlanner ;', function (error, result, fields) {
+        if (error) {
+            console.log('Error message: ', error);
+            throw error;
+        };
+        console.log(result)
+        response.send(result); //get------- sents all details of current users ----ace
+    })
+})
